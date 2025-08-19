@@ -16,21 +16,21 @@ namespace workshop.wwwapi.Endpoints
             calculation.MapGet("/", GetAll);
         }
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public static async Task<IResult> Calculate(ICalculatorService service, ICalculationRepository calcRepository,  CalculatePost model)
+        public static async Task<IResult> Calculate(ICalculatorService service, IRepository<Calculation> calcRepository,  CalculatePost model)
         {
             int result = service.Add(model.A, model.B);
 
             Calculation calc = new Calculation() { A = model.A, B = model.B, Result = result, PersonId=model.PersonId };
             
-            await calcRepository.Add(calc);
+            await calcRepository.Insert(calc);
             
             return TypedResults.Ok(new { CreationDate = DateTime.UtcNow, A=model.A, B = model.B, Result= result });
         }
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public static async Task<IResult> GetAll(ICalculationRepository calcRepository)
+        public static async Task<IResult> GetAll(IRepository<Calculation> calcRepository)
         {
             List<Object> response = new List<Object>();
-            var results = await calcRepository.GetAll();
+            var results = await calcRepository.Get();
             foreach(Calculation c in results)
             {
                 response.Add(new { A=c.A, B=c.B, Created=c.CreationDate, Result=c.Result});

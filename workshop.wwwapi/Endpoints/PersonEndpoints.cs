@@ -14,10 +14,10 @@ namespace workshop.wwwapi.Endpoints
 
         }
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public static async Task<IResult> GetAll(IPersonRepository personRepository)
+        public static async Task<IResult> GetAll(IRepository<Person> personRepository)
         {
             List<Object> response = new List<Object>();
-            var results = await personRepository.GetAll();
+            var results = await personRepository.GetWithIncludes(p => p.Calculations);
             foreach (Person person in results)
             {
                 List<Object> calculationDTO = new List<Object>();
