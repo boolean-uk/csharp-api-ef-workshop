@@ -4,10 +4,10 @@ using workshop.wwwapi.Models;
 
 namespace workshop.wwwapi.Repository
 {
-    public class Repository : IRepository
+    public class CalculationRepository : ICalculationRepository
     {
         private DataContext _db;
-        public Repository(DataContext db)
+        public CalculationRepository(DataContext db)
         {
             _db = db;
         }
@@ -22,5 +22,6 @@ namespace workshop.wwwapi.Repository
         {
             return await _db.Calculations.ToListAsync();
         }
+
     }
 }

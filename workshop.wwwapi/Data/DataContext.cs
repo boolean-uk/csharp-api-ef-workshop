@@ -9,6 +9,7 @@ namespace workshop.wwwapi.Data
         {
 
         }
-        public DbSet<Calculation> Calculations { get; set; }
+        public DbSet<Calculation> Calculations { get; set; }    
+        public DbSet<Person> People { get; set; }
     }
 }

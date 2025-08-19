@@ -12,7 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddScoped<ICalculatorService, CalculatorService>();
-builder.Services.AddScoped<IRepository, Repository>();
+builder.Services.AddScoped<ICalculationRepository, CalculationRepository>();
+builder.Services.AddScoped<IPersonRepository, PersonRepository>();
 builder.Services.AddDbContext<DataContext>(options => {
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnectionString"));
     options.LogTo(message => Debug.WriteLine(message));
@@ -35,6 +36,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.ConfigureCalculationEndpoints();
+app.ConfigurePersonEndpoints();
 
 app.Run();
 

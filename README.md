@@ -60,3 +60,8 @@ In the Package Manager Console you can run:
 
 - ```add-migration First``` to create a migration
 - ```update-database``` to apply to a db
+
+
+## Repository Layer
+
+So this isn't ideal at the moment.  I'm creating a Repository Layer for every Entity in my Database.  
