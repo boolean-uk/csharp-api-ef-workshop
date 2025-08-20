@@ -13,7 +13,7 @@ namespace workshop.wwwapi.Endpoints
         {
             var calculation = app.MapGroup("calculations");
 
-            calculation.MapPost("/", Calculate).AddEndpointFilter<ValidationFilter<CalculatePost>>(); ;
+            calculation.MapPost("/", Calculate).AddEndpointFilter<ValidationFilter<CalculatePost>>(); 
             calculation.MapGet("/", GetAll);
         }
         [ProducesResponseType(StatusCodes.Status200OK)]
