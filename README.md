@@ -92,3 +92,10 @@ INSERT INTO "PersonSubjects" ("PersonId", "SubjectId", "CreationDate") VALUES (1
 INSERT INTO "PersonSubjects" ("PersonId", "SubjectId", "CreationDate") VALUES (1, 7, CURRENT_TIMESTAMP);
 
 ```
+
+
+## Validation
+```
+Install-Package FluentValidation
+Install-Package FluentValidation.DependencyInjectionExtensions
+```

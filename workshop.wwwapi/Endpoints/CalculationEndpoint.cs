@@ -3,6 +3,7 @@ using workshop.calculator;
 using workshop.wwwapi.DTOs;
 using workshop.wwwapi.Models;
 using workshop.wwwapi.Repository;
+using workshop.wwwapi.Validators;
 
 namespace workshop.wwwapi.Endpoints
 {
@@ -12,7 +13,7 @@ namespace workshop.wwwapi.Endpoints
         {
             var calculation = app.MapGroup("calculations");
 
-            calculation.MapPost("/", Calculate);
+            calculation.MapPost("/", Calculate).AddEndpointFilter<ValidationFilter<CalculatePost>>(); ;
             calculation.MapGet("/", GetAll);
         }
         [ProducesResponseType(StatusCodes.Status200OK)]
