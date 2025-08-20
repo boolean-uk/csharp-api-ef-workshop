@@ -66,3 +66,29 @@ In the Package Manager Console you can run:
 ## Repository Layer
 
 So this isn't ideal at the moment.  I'm creating a Repository Layer for every Entity in my Database.  
+
+
+
+## PersonSubjects Table
+
+The join between the Person and Subjects is done via the PersonSubjects table.  Note as I haven't written and endpoint for this, I used sql to insert some records:
+```sql
+
+INSERT INTO "Subjects" ("Name") VALUES
+  ('Mathematics'),
+  ('Nautical Studies'),
+  ('Science'),
+  ('Spanish'),
+  ('German'),
+  ('French'),
+  ('Dutch'),
+  ('Norwegian');
+
+
+
+INSERT INTO "PersonSubjects" ("PersonId", "SubjectId", "CreationDate") VALUES (1, 3, CURRENT_TIMESTAMP);
+INSERT INTO "PersonSubjects" ("PersonId", "SubjectId", "CreationDate") VALUES (1, 1, CURRENT_TIMESTAMP);
+INSERT INTO "PersonSubjects" ("PersonId", "SubjectId", "CreationDate") VALUES (1, 6, CURRENT_TIMESTAMP);
+INSERT INTO "PersonSubjects" ("PersonId", "SubjectId", "CreationDate") VALUES (1, 7, CURRENT_TIMESTAMP);
+
+```

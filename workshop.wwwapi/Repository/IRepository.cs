@@ -10,6 +10,7 @@ namespace workshop.wwwapi.Repository
         Task<T> Delete(object id);
         Task Save();
         Task<T> GetById(int id);
-        Task<IEnumerable<T>> GetWithIncludes(params Expression<Func<T, object>>[] includes);
+        //Task<IEnumerable<T>> GetWithIncludes(params Expression<Func<T, object>>[] includes);
+        Task<IEnumerable<T>> GetWithIncludes(Func<IQueryable<T>, IQueryable<T>> includeQuery);
     }
 }

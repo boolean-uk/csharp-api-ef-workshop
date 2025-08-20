@@ -1,11 +1,9 @@
 ﻿namespace workshop.wwwapi.Models
 {
-    public class Person
+    public class Subject
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public List<Calculation> Calculations { get; set; } = new List<Calculation>();
         public ICollection<PersonSubject> PersonSubjects { get; set; }
-
     }
 }

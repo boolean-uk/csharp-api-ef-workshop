@@ -52,13 +52,18 @@ namespace workshop.wwwapi.Repository
         {
             return await _table.FindAsync(id);
         }
-        public async Task<IEnumerable<T>> GetWithIncludes(params Expression<Func<T, object>>[] includes)
+        //public async Task<IEnumerable<T>> GetWithIncludes(params Expression<Func<T, object>>[] includes)
+        //{
+        //    IQueryable<T> query = _table;
+        //    foreach (var include in includes)
+        //    {
+        //        query = query.Include(include);
+        //    }
+        //    return await query.ToListAsync();
+        //}
+        public async Task<IEnumerable<T>> GetWithIncludes(Func<IQueryable<T>, IQueryable<T>> includeQuery)
         {
-            IQueryable<T> query = _table;
-            foreach (var include in includes)
-            {
-                query = query.Include(include);
-            }
+            IQueryable<T> query = includeQuery(_table);
             return await query.ToListAsync();
         }
 
