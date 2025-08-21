@@ -1,6 +1,16 @@
 # C# API with Injected Service and Entity Framework
 
 This application is a Calculator service injected into our API
+
+## Branches
+
+Main, OneToMany, ManyToMany, Repository, Validation increase in complexity.
+
+List branches: ```git branch```
+Change branch: ``` git checkout <<branchname>>```
+
+
+
 ## Setup
 
 - Remove or rename the *appsettings.Example.json* so that you have an *appsettings.json, appsettings.Development.json* file in the root of the workshop.wwwapi project which contains your NEON credentials:
