@@ -2,21 +2,27 @@
 
 This application is a Calculator service injected into our API
 
+## ERD
+
+An Entity Relationship Diagram shows our database structure. Generated using [app.diagrams.net](https://app.diagrams.net/). This is a simple one that shows the Entities and the links between them.
+
+<img src="erd.png" alt="Description" width="400px">
+
+- [Further Reading on W3Schools](https://www.w3schools.in/dbms/er-model)
+
 ## Branches
 
 Main, OneToMany, ManyToMany, Repository, Validation increase in complexity.
 
-List branches: ```git branch```
-Change branch: ``` git checkout <<branchname>>```
-
-
+List branches: `git branch`
+Change branch: ` git checkout <<branchname>>`
 
 ## Setup
 
-- Remove or rename the *appsettings.Example.json* so that you have an *appsettings.json, appsettings.Development.json* file in the root of the workshop.wwwapi project which contains your NEON credentials:
+- Remove or rename the _appsettings.Example.json_ so that you have an _appsettings.json, appsettings.Development.json_ file in the root of the workshop.wwwapi project which contains your NEON credentials:
+
 ```json
 {
-
   "Logging": {
     "LogLevel": {
       "Default": "Information",
@@ -26,35 +32,33 @@ Change branch: ``` git checkout <<branchname>>```
   "AllowedHosts": "*",
   "ConnectionStrings": {
     "DefaultConnectionString": "Host=URL; Database=neondb; Username=neondb_owner; Password=PASSWORD;"
-
   }
 }
-
 ```
 
 - Note the .gitignore file in the root of the project which prevents the build directories being uploaded:
+
 ```
-*/**/bin/Debug   
-*/**/bin/Release   
-*/**/obj/Debug   
-*/**/obj/Release   
+*/**/bin/Debug
+*/**/bin/Release
+*/**/obj/Debug
+*/**/obj/Release
 /workshop.wwwapi/appsettings.json
 /workshop.wwwapi/appsettings.Development.json
 ```
-
 
 ## Dependencies Installed
 
 You'll need all of these which have already been installed in this project:
 
-- ```Install-Package Scalar.AspNetCore``` provides a /scalar endpoint 
-- ```Install-Package Swashbuckle.AspNetCore ``` provides a /swagger endpoint
-- ```Install-Package Microsoft.EntityFrameworkCore``` 
-- ```Install-Package Microsoft.EntityFrameworkCore.Tools```
-- ```Install-Package Microsoft.EntityFrameworkCore.Design```
-- ```Install-Package NpgSql.EntityFrameworkCore.PostgreSql```
+- `Install-Package Scalar.AspNetCore` provides a /scalar endpoint
+- `Install-Package Swashbuckle.AspNetCore ` provides a /swagger endpoint
+- `Install-Package Microsoft.EntityFrameworkCore`
+- `Install-Package Microsoft.EntityFrameworkCore.Tools`
+- `Install-Package Microsoft.EntityFrameworkCore.Design`
+- `Install-Package NpgSql.EntityFrameworkCore.PostgreSql`
 
-## Change the ```Program.cs```
+## Change the `Program.cs`
 
 ```cs
 builder.Services.AddDbContext<DataContext>(options => {
@@ -69,19 +73,17 @@ builder.Services.AddDbContext<DataContext>(options => {
 
 In the Package Manager Console you can run:
 
-- ```add-migration First``` to create a migration
-- ```update-database``` to apply to a db
-
+- `add-migration First` to create a migration
+- `update-database` to apply to a db
 
 ## Repository Layer
 
-So this isn't ideal at the moment.  I'm creating a Repository Layer for every Entity in my Database.  
-
-
+So this isn't ideal at the moment. I'm creating a Repository Layer for every Entity in my Database.
 
 ## PersonSubjects Table
 
-The join between the Person and Subjects is done via the PersonSubjects table.  Note as I haven't written and endpoint for this, I used sql to insert some records:
+The join between the Person and Subjects is done via the PersonSubjects table. Note as I haven't written and endpoint for this, I used sql to insert some records:
+
 ```sql
 
 INSERT INTO "Subjects" ("Name") VALUES
@@ -103,8 +105,8 @@ INSERT INTO "PersonSubjects" ("PersonId", "SubjectId", "CreationDate") VALUES (1
 
 ```
 
-
 ## Validation
+
 ```
 Install-Package FluentValidation
 Install-Package FluentValidation.DependencyInjectionExtensions
